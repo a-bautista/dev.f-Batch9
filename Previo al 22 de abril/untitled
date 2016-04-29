@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp2" >
+<head>
+	<title>Example</title>
+	<meta charset="utf-8"/>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+	<script src="starWars.js"></script>
+</head>
+
+	<body>
+
+	</body>
+
+</html>

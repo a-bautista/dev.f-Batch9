@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="">
+	<head>
+		<title>Using AngularJS Directives and Data bindings.</title>	
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-resource.min.js"></script>
+		<script>
+			function SimpleController ($scope){
+				$scope.customers = [
+				   {name :'John Smith', city: 'Phoenix'}, 
+				   {name: 'John Doe', city: 'Chicago'},
+				   {name: 'John Caffarty', city: 'N.Y.'}
+				];
+			}
+
+		</script>
+	</head>
+
+	<body>
+		<div ng-controller="SimpleController">
+			Name:
+			<br />
+				<input type="text" ng-model="name" />
+			<br />
+			<ul>
+		    	<li ng-repeat="cust in customers | filter:name | orderBy:'city' ">{{cust.name | uppercase}} - {{cust.city | uppercase}}</li>
+			</ul>
+		</div>
+	
+<!--
+	<body ng-init="customer=[{name :'John Smith', city: 'Phoenix'}, 
+				   {name: 'John Doe', city: 'Chicago'},
+				   {name: 'John Caffarty', city: 'N.Y.'} 
+				   ]">
+	-->
+
+		<!--names=['John Smith','John Doe','Jane Doe'] this is an array of strings
+			names=[{name :'John Smith', City: 'Phoenix'}, 
+				   {name: 'John Doe', City: 'Chicago'},
+				   {name: 'John Caffarty', City: 'N.Y.'}, 
+				   ] this is an array of objects
+	-->
+
+	<!--
+		Name: 
+		<br />
+			<input type="text" ng-model="name" /> {{name}}
+		<ul>
+			<li ng-repeat="cust in customer | filter:name | orderBy:'city' ">{{cust.name | uppercase}} - {{cust.city | uppercase}}</li>
+		</ul>
+
+	-->
+
+
+	</body>
+
+</html>

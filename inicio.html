@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="starWars" >
+<head>
+	<meta charset="UTF-8" ng-app="starWars">
+	<title>Pelis de Star Wars</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+	<script src="starWars.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+
+	<body>
+		
+		<div class = "container" ng-controller="starWarsController as swc">
+		<div class="row">
+			<div class="col m12">
+				<div class="card teal darken-3">
+					<div class="card-content white-text">
+						<span class="card-title">Filter by:</span>
+						<input type="text" ng-model="search.episode_id" placeholder="Episode">
+
+						Exact Release Date:{{search.release_date}} <input type="range" min="1960" max="2016" placeholder="Year"
+						ng-model="search.release_date">
+
+					</div>
+					<div class="card-action">
+						<p>
+							<input type="checkbox" id="test5" ng-model="swc.useFilterForm" />
+							<label for="test5">Use filterBy Form</label>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		Result: <div class="row">
+
+		<div class="row">
+			<div class="card col s4" ng-repeat="m in swc.collection | filter : (swc.useFilterForm || '') && search
+			| orderBy: 'episode_id' ">
+			<div class="card-image waves-effect waves-block waves-light">
+				<img class="activator" styles="height:400px" ng-src="{{m.img}}">
+			</div>
+			<div class="card-content">
+				<span class="card-title activator grey-text text-darken-4">{{m.title}}<i class="material-icons right">more_vert</i></span>
+				<p><a ng-href="{{m.url}}">Link for more info...</a></p>
+			</div>
+			<div class="card-reveal">
+				<span class="card-title grey-text text-darken-4">Episode {{m.episode_id}}-{{m.title}}
+					<p>
+						<b>Opening</b>: {{m.opening_crawl}} </br>
+					</p>
+					<p>
+						<b>Release date</b> : {{m.release_date}} <br>
+					</p>
+				</div>
+			</div>
+		</div>
+		</div>
+
+
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+	
+
+
+	</body>
+
+
+
+</html>

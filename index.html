@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+ng-app="myApp">
+<head>
+	<meta charset="UTF-8" ng-app="myApp">
+	<title>Document</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+	<script src="myApp.js"></script> 
+</head>
+<body ng-controller="myController as first">
+	
+	{{first.name}}
+	<p>{{first.number}}+2 = {{first.number+1}}</p>
+	
+    <button ng-click="first.clickeame()">Click aquí</button>	
+     {{first.age}}
+	<p ng-repeat="person in first.people">{{person.name}}</p>
+	
+
+	<input type="text" ng-model="search.name">
+	<table style="border:1px solid red; ">
+		<tr ng-repeat="person in first.people | filter: search "><!-- | el pipe es un filtro -->
+			<td>{{person.name}}</td>
+			<td>{{person.age}}</td>
+			<td>{{person.place}}</td>
+			<td><button ng-click="first.addage(person)">Add age</button></td>
+		</tr>
+
+</body>
+</html>
